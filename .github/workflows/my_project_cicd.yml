@@ -57,6 +57,7 @@ jobs:
       - name: build and push docker image to registry
         uses: docker/build-push-action@v4
         with:
-          context: ./Dockerfile
+          context: .
+          file: ./Dockerfile
           push: true
-          tags: jpdas/helloworld-app:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/helloworld-app:latest
