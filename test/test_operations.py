@@ -1,9 +1,10 @@
-from src.math_operations import add, sub
+from src.app import app
+from fastapi.testclient import TestClient
 
-def test_add():
-    assert add(2, 3) == 5
-    assert add(-1, 1) == 0
 
-def test_sub():
-    assert sub(5, 3) == 2
-    assert sub(2, -2) == 4
+
+def test_home():
+    response = app.test_client().get("/")
+
+    assert response.status_code==200
+    assert response.data== b"Hello World!"
