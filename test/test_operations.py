@@ -1,10 +1,11 @@
+import pytest
 from src.app import app
 from fastapi.testclient import TestClient
 
-
+client = TestClient(app)
 
 def test_home():
-    response = app.test_client().get("/")
+    response = client.get("/")
 
     assert response.status_code==200
     assert response.data== b"Hello World!"
