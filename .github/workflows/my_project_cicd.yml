@@ -1,4 +1,4 @@
-name: Python CI
+name: FASTAPI  CI/CD HELLOWORLD-APP
 
 on:
     push:
@@ -10,7 +10,7 @@ on:
 
 
 jobs:
-  build_and_test:
+  build-and-test:
     runs-on: ubuntu-latest
     environment: test
 
@@ -28,5 +28,17 @@ jobs:
         pip install -r requirements.txt
     - name: Run tests
       run: pytest 
+  
+  build-docker-image:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker Image
+      env:
+        IMAGE_TAG: jpdas/helloworld-app
+      run: |
+        docker build -t $IMAGE_TAG . 
     
+      
 
