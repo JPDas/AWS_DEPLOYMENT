@@ -5,14 +5,14 @@ on:
       branches:
         - main
       paths:
-        - "api/**"
+        - "app/**"
         - ".github/workflows/my_project_cicd.yml"
 
     pull_request:
       branches:
         - main
       paths:
-        - "api/**"
+        - "app/**"
         - ".github/workflows/my_project_cicd.yml"
 
 jobs:
