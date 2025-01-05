@@ -1,6 +1,11 @@
-FROM python:3.12.8-slim-bullseye
-COPY ./app ./app
-COPY ./requirements.txt ./requirements.txt
-RUN pip install -r requirements.txt
+FROM public.ecr.aws/lambda/python:3.12
+# Copy source code
+COPY ./app/ ${LAMBDA_TASK_ROOT}/app/
+# Copy requirements.txt
+COPY ./requirements.txt ${LAMBDA_TASK_ROOT}
+# Install dependencies
+RUN pip install -r ${LAMBDA_TASK_ROOT}/requirements.txt
+# Set woring directory
+WORKDIR ${LAMBDA_TASK_ROOT}/app
 EXPOSE 8000
-CMD ["app.handler"]
+CMD ["main.handler"]
