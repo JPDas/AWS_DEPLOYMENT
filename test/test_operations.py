@@ -1,11 +1,14 @@
 import pytest
-from src.app import app
-from fastapi.testclient import TestClient
+import json
+from src.app import lambda_handler
+# from src.app import app
+# from fastapi.testclient import TestClient
 
-client = TestClient(app)
+# client = TestClient(app)
 
 def test_home():
-    response = client.get("/")
+    response = lambda_handler(None, None)
 
-    assert response.status_code==200
-    assert response.json()== {"message": "Hello World!"}
+    print(response)
+    assert response["statusCode"]==200
+    assert json.loads(response["body"])["message"]== "Hello World!"
