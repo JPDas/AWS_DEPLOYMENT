@@ -8,6 +8,7 @@ app = FastAPI(title="AWS + FastAPI",
 # Mangum allows us to use Lambdas to process requests
 handler = Mangum(app=app)
 
+
 @app.get("/")
 async def root():
    return {"message": "Hello World!"}
