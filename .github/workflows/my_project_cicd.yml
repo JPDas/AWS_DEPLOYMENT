@@ -2,12 +2,18 @@ name: FASTAPI  CI/CD HELLOWORLD-APP
 
 on:
     push:
-        branches:
-            - main
-    pull_request:
-        branches:
-            - main
+      branches:
+        - main
+      paths:
+        - "api/**"
+        - ".github/workflows/my_project_cicd.yml"
 
+    pull_request:
+      branches:
+        - main
+      paths:
+        - "api/**"
+        - ".github/workflows/my_project_cicd.yml"
 
 jobs:
   build-and-test:
