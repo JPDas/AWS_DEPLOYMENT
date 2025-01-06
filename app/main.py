@@ -6,7 +6,7 @@ app = FastAPI(title="AWS + FastAPI",
     description="AWS API Gateway, Lambdas and FastAPI")
 
 # Mangum allows us to use Lambdas to process requests
-handler = Mangum(app=app)
+handler = Mangum(app)
 
 
 @app.get("/")
